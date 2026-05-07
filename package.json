@@ -1,0 +1,48 @@
+{
+  "name": "kota-skillz",
+  "version": "1.0.0",
+  "description": "An industrial-grade 'Vibe Coding' standard library and context manager for AI coding agents.",
+  "main": "bin/kota.js",
+  "type": "module",
+  "bin": {
+    "kota": "./bin/kota.js"
+  },
+  "scripts": {
+    "test": "node bin/kota.js --help"
+  },
+  "keywords": [
+    "vibe-coding",
+    "ai",
+    "llm",
+    "architecture",
+    "patterns",
+    "cursor",
+    "copilot",
+    "context",
+    "design-patterns",
+    "security"
+  ],
+  "author": {
+    "name": "Dayzidee",
+    "url": "https://github.com/Dayzidee"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dayzidee/kota-skillz.git"
+  },
+  "homepage": "https://github.com/Dayzidee/kota-skillz#readme",
+  "bugs": {
+    "url": "https://github.com/Dayzidee/kota-skillz/issues"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "commander": "^14.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.6.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
