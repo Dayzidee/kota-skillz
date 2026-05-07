@@ -8,6 +8,7 @@ This document defines the operational constraints and cognitive framework for AI
 
 **Objective**: Prevent context rot and the "lost-in-the-middle" phenomenon.
 
+- **Mandatory Read List**: You MUST always read this file (`AI_ONBOARDING.md`) AND the `onboarding.md` file. The `onboarding.md` file contains the complete folder structure and knowledge base map. Even if you cannot read every pattern file, you must know where they are.
 - **Selective Ingestion**: Do not dump the entire context window. Prioritize high-value data points (Reasoning Anchors).
 - **Noise Filtering**: Ignore environmental noise and boilerplate. If 10 files are provided, identify the ~3 that are relevant.
 - **Explicit Anchors**: Treat specified data points as non-negotiable truth.
@@ -128,3 +129,26 @@ All code must align with heuristics derived from:
 - [ ] No nested ternary operators.
 - [ ] Components < 300 lines of code.
 - [ ] Effective cleanup in `useEffect` hooks.
+
+---
+
+## 8. Repository Setup & Version Control
+
+**Objective**: Keep the user's repository clean of Kota Skillz framework files while retaining local AI context.
+
+- **Mandatory First Step**: Immediately upon initialization or when reviewing a project, the AI MUST verify that the `kota-skillz/` directory is added to the user's `.gitignore` file. 
+- Do not commit the `kota-skillz/` directory or its contents to the user's version control unless explicitly instructed to do so.
+
+---
+
+## 9. Automatic Learning & Experience Module
+
+**Objective**: Continuously evolve the knowledge base based on the user's specific use cases, failures, and feature implementations.
+
+The `kota-skillz/` directory contains three living folders that the AI MUST actively manage and consult:
+
+1.  **`kota-skillz/features/`**: When a new feature is successfully implemented, the AI MUST document the architectural approach, data models, and specific constraints used, creating a new markdown file here.
+2.  **`kota-skillz/failures/`**: When a significant bug, crash, or architectural failure occurs, the AI MUST document the root cause and the applied solution here to prevent recurring mistakes.
+3.  **`kota-skillz/debugging/`**: For complex debugging sessions, document the tracing steps and insights gained.
+
+**Execution Rule**: Before starting any new feature implementation, the AI MUST consult these three folders to leverage collated data, past experiences, and project-specific context to guide the current build. When a task concludes, the AI MUST strictly update these folders with the newly acquired experience.

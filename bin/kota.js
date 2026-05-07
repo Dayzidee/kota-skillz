@@ -27,30 +27,62 @@ async function copyDir(src, dest) {
 program
   .name('kota')
   .description('Kota Skillz: An industrial-grade standard library for AI coding agents (Vibe Coding).')
-  .version('1.0.0');
+  .version('1.0.1');
 
 program
   .command('init')
-  .description('Initialize Kota Skillz in your current project (copies patterns/ and AI_ONBOARDING.md)')
+  .description('Initialize Kota Skillz in your current project (creates kota-skillz/ directory with all patterns and instructions)')
   .action(async () => {
     const cwd = process.cwd();
-    console.log(chalk.blue('Initializing Kota Skillz in ' + cwd));
+    const targetDir = path.join(cwd, 'kota-skillz');
+    console.log(chalk.blue('Initializing Kota Skillz in ' + targetDir));
 
     try {
-      // Copy AI_ONBOARDING.md
-      const onboardingSrc = path.join(packageRoot, 'AI_ONBOARDING.md');
-      const onboardingDest = path.join(cwd, 'AI_ONBOARDING.md');
-      await fs.copyFile(onboardingSrc, onboardingDest);
-      console.log(chalk.green('✅ Copied AI_ONBOARDING.md'));
+      // Create the root kota-skillz directory in the user's project
+      await fs.mkdir(targetDir, { recursive: true });
 
-      // Copy patterns directory
-      const patternsSrc = path.join(packageRoot, 'patterns');
-      const patternsDest = path.join(cwd, 'patterns');
-      await copyDir(patternsSrc, patternsDest);
-      console.log(chalk.green('✅ Copied patterns/ directory'));
+      // Specific files and directories to include (everything making up the knowledge base)
+      const filesToCopy = ['AI_ONBOARDING.md', 'onboarding.md', 'task.md', 'README.md'];
+      const dirsToCopy = [
+        'patterns',
+        'debugging',
+        'failures',
+        'features',
+        'instructions',
+        'prompts',
+        'skeleton',
+        'stack'
+      ];
+
+      for (const file of filesToCopy) {
+        try {
+          await fs.copyFile(path.join(packageRoot, file), path.join(targetDir, file));
+          console.log(chalk.green(`✅ Copied ${file}`));
+        } catch (e) {
+          // Silent skip for optional files if not found
+        }
+      }
+
+      for (const dir of dirsToCopy) {
+        try {
+          await copyDir(path.join(packageRoot, dir), path.join(targetDir, dir));
+          console.log(chalk.green(`✅ Copied ${dir}/ directory`));
+        } catch (e) {
+          // Silent skip if directory doesn't exist
+        }
+      }
 
       console.log(chalk.bold.magenta('\n🚀 Kota Skillz initialized successfully!'));
-      console.log('To use: Attach AI_ONBOARDING.md as your system prompt or project context, and let the AI read the patterns when making architectural decisions.');
+      
+      console.log(chalk.yellow('\n---------------------------------------------------------'));
+      console.log(chalk.cyan('Copy me and paste in your customizations, instructions or rules:'));
+      console.log(chalk.white('\nCRITICAL: Before writing any code or making architectural decisions, you MUST read the rules in `kota-skillz/AI_ONBOARDING.md` and consult the relevant architectural patterns in the `kota-skillz/patterns/` directory. Strict adherence is required.\n'));
+      console.log(chalk.yellow('---------------------------------------------------------'));
+      
+      console.log(chalk.cyan('\nCopy me and paste in your agent chat:'));
+      console.log(chalk.white('\nI have initialized the Kota Skillz standard library in the `kota-skillz/` directory. This contains our execution protocol, architectural patterns, and learning modules. Please read `kota-skillz/AI_ONBOARDING.md` to understand your operational constraints and prepare to consult it for every build.\n'));
+      console.log(chalk.yellow('---------------------------------------------------------'));
+
     } catch (err) {
       console.error(chalk.red('❌ Error initializing Kota Skillz:'), err.message);
     }
