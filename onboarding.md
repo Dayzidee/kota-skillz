@@ -45,7 +45,8 @@ kota-skillz/
 ## ⚙️ Core Rules of Engagement
 
 1. **Map Your Context**: Before implementing any feature or fix, locate the relevant pattern in `patterns/` and check `failures/` for past mistakes.
-2. **Standard of Excellence**: Every implementation must meet these "Quality Gates":
+2. **Git Branching Strategy**: For massive refactors or building new architecture on a working structure, you MUST create and switch to a new git branch. Merge to the main branch ONLY when verified perfectly working.
+3. **Standard of Excellence**: Every implementation must meet these "Quality Gates":
    - **Input Validation**: All user data must be validated (schema-first).
    - **Structured Logging**: Use `request_id` and context-rich JSON logs.
    - **Idempotency**: All state-changing operations must be idempotent.

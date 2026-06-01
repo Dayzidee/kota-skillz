@@ -138,6 +138,7 @@ All code must align with heuristics derived from:
 
 - **Mandatory First Step**: Immediately upon initialization or when reviewing a project, the AI MUST verify that the `kota-skillz/` directory is added to the user's `.gitignore` file. 
 - Do not commit the `kota-skillz/` directory or its contents to the user's version control unless explicitly instructed to do so.
+- **Git Branching Strategy**: For any massive refactors, large bug fixes, or the addition of a new architecture to an already working structure, the AI MUST automatically create and switch to a new git branch before writing code. The code should only be merged to the main branch after the new fix/feature is perfectly verified and working.
 
 ---
 
