@@ -4,15 +4,15 @@ import { program } from 'commander';
 import fs from 'fs/promises';
 import path from 'path';
 import chalk from 'chalk';
+import { execSync } from 'child_process';
 
 program
   .name('kota')
   .description('Kota Skillz: An industrial-grade standard library for AI coding agents (Vibe Coding).')
-  .version('1.1.0');
+  .version('1.1.1');
 
 program
-  .command('generate-lock')
-  .description('Generate a skills-lock.json file preconfigured with Kota Skillz, Supabase, and Remotion')
+  .description('Automatically configures the AI agent ecosystem (Kota Skillz, Supabase, Remotion)')
   .action(async () => {
     const cwd = process.cwd();
     const lockPath = path.join(cwd, 'skills-lock.json');
@@ -47,14 +47,19 @@ program
     try {
       await fs.writeFile(lockPath, JSON.stringify(lockData, null, 2), 'utf8');
       console.log(chalk.green(`✅ Created skills-lock.json successfully!`));
-      console.log(chalk.bold.magenta('\n🚀 Next Step: Run `npx skills install` to pull down all agent protocols!'));
+      console.log(chalk.blue('\n⏳ Pulling down AI agent skills (this may take a moment)...'));
+      
+      // Execute the skills.sh installation
+      execSync('npx --yes skills install', { stdio: 'inherit' });
+      
+      console.log(chalk.bold.magenta('\n🚀 AI Ecosystem completely configured!'));
       
       console.log(chalk.yellow('\n---------------------------------------------------------'));
-      console.log(chalk.cyan('Once installed, copy me and paste in your agent chat:'));
+      console.log(chalk.cyan('Copy me and paste in your agent chat:'));
       console.log(chalk.white('\nI have installed the standard libraries for Kota Skillz, Supabase, and Remotion into the `.agents/skills/` directory. Please read `.agents/skills/kota-skillz/SKILL.md` to understand your operational constraints and review the other SKILL.md files for domain-specific best practices.\n'));
       console.log(chalk.yellow('---------------------------------------------------------'));
     } catch (err) {
-      console.error(chalk.red('❌ Error generating lockfile:'), err.message);
+      console.error(chalk.red('❌ Error during installation:'), err.message);
     }
   });
 

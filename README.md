@@ -67,19 +67,13 @@ Contains highly specialized markdown files covering:
 
 ---
 
-### 1. Install via Skills Registry
-Instead of a standard NPM package, Kota Skillz is a native AI agent skill. To install the execution protocol into your project's agentic environment, run:
-```bash
-npx skills add Dayzidee/kota-skillz
-```
-
-### 2. Generate the Agent Ecosystem Lockfile (Optional)
-If you want to pull down the entire Kota Skillz ecosystem (including standard practices for Supabase and Remotion), you can generate a `skills-lock.json` file:
+### 1. The Magic Install
+To automatically generate the lockfile and download the entire Kota Skillz ecosystem (including standard practices for Supabase and Remotion) into your agent's environment, simply run:
 
 ```bash
-npx Dayzidee/kota-skillz generate-lock
-npx skills install
+npx Dayzidee/kota-skillz
 ```
+
 *This will pull the knowledge base directly into your `.agents/skills/` directory where tools like Cursor, Cline, and Antigravity can read them natively.*
 
 ### 3. Connect to your AI IDE (Cursor / Copilot / Windsurf)
@@ -96,8 +90,7 @@ npx skills install
 
 | Command | Description |
 | :--- | :--- |
-| `kota generate-lock` | Generates a `skills-lock.json` file preconfigured with the Kota Skillz ecosystem. |
-| `kota onboard` | Prints the `SKILL.md` text to the console (useful for piping to other tools). |
+| `npx Dayzidee/kota-skillz` | Automatically configures the ecosystem and downloads skills into `.agents/skills/`. |
 | `kota audit` | *(Coming Soon)* Runs a static analysis check against the QA patterns. |
 
 ---
