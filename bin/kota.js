@@ -50,7 +50,7 @@ program
       console.log(chalk.blue('\n⏳ Pulling down AI agent skills (this may take a moment)...'));
       
       // Execute the skills.sh installation
-      execSync('npx --yes skills install', { stdio: 'inherit' });
+      execSync('npx --yes skills experimental_install', { stdio: 'inherit' });
       
       console.log(chalk.bold.magenta('\n🚀 AI Ecosystem completely configured!'));
       

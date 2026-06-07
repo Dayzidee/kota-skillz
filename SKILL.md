@@ -1,5 +1,5 @@
 ---
-name: Kota Skillz
+name: kota-skillz
 description: An industrial-grade standard library and execution protocol for AI coding agents.
 ---
 
