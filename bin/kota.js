@@ -52,6 +52,23 @@ program
       // Execute the skills.sh installation
       execSync('npx --yes skills experimental_install', { stdio: 'inherit' });
       
+      console.log(chalk.blue('\n⚙️ Injecting cross-references into domain skills...'));
+      
+      const injectionText = `\n\n---\n\n> [!IMPORTANT]\n> **KOTA SKILLZ INTEGRATION:** You are operating inside a Kota Skillz environment. In addition to these domain-specific instructions, you MUST also adhere to the architectural constraints and execution protocols defined in \`../kota-skillz/SKILL.md\`.\n`;
+
+      const supabaseSkillPath = path.join(cwd, '.agents/skills/supabase/SKILL.md');
+      const supabasePgSkillPath = path.join(cwd, '.agents/skills/supabase-postgres-best-practices/SKILL.md');
+      const remotionSkillPath = path.join(cwd, '.agents/skills/remotion-best-practices/SKILL.md');
+
+      for (const skillFile of [supabaseSkillPath, supabasePgSkillPath, remotionSkillPath]) {
+        try {
+          await fs.appendFile(skillFile, injectionText, 'utf8');
+          console.log(chalk.gray(`  ↳ Injected Kota Skillz reference into ${path.basename(path.dirname(skillFile))}`));
+        } catch (e) {
+          // Ignore errors if the file doesn't exist (e.g., if the user removed a skill from the lockfile)
+        }
+      }
+
       console.log(chalk.bold.magenta('\n🚀 AI Ecosystem completely configured!'));
       
       console.log(chalk.yellow('\n---------------------------------------------------------'));
