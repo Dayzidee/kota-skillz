@@ -21,25 +21,35 @@ program
     const lockData = {
       "version": 1,
       "skills": {
-        "kota-skillz": {
-          "source": "Dayzidee/kota-skillz",
+        "remotion-best-practices": {
+          "source": "remotion-dev/skills",
           "sourceType": "github",
-          "skillPath": "SKILL.md"
+          "skillPath": "skills/remotion/SKILL.md",
+          "computedHash": "006f8413941b59eff54a7ce64851b8a2fb79e7a3a5f1a895e97a48f01482553d"
         },
         "supabase": {
           "source": "supabase/agent-skills",
           "sourceType": "github",
-          "skillPath": "skills/supabase/SKILL.md"
+          "skillPath": "skills/supabase/SKILL.md",
+          "computedHash": "d414d598b9428b3e851c4ce61898649906b19e55aa7415bb42a286bd9ca2ab32"
         },
         "supabase-postgres-best-practices": {
           "source": "supabase/agent-skills",
           "sourceType": "github",
-          "skillPath": "skills/supabase-postgres-best-practices/SKILL.md"
+          "skillPath": "skills/supabase-postgres-best-practices/SKILL.md",
+          "computedHash": "0d2c4857a7d6fdcd3fbc46e458fa4c497f029cab89a01548b3defce203003932"
         },
-        "remotion-best-practices": {
-          "source": "remotion-dev/skills",
+        "ui-ux-pro-max-skill": {
+          "source": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
           "sourceType": "github",
-          "skillPath": "SKILL.md"
+          "skillPath": "skills/ui-ux-pro-max-skill/SKILL.md",
+          "ref": "b7e3af80f6e331f6fb456667b82b12cade7c9d35"
+        },
+        "ponytail": {
+          "source": "DietrichGebert/ponytail",
+          "sourceType": "github",
+          "skillPath": "skills/ponytail/SKILL.md",
+          "ref": "40e50d9e03242aa5dd53ac771950f9127362b25f"
         }
       }
     };
