@@ -56,9 +56,9 @@ program
       
       const injectionText = `\n\n---\n\n> [!IMPORTANT]\n> **KOTA SKILLZ INTEGRATION:** You are operating inside a Kota Skillz environment. In addition to these domain-specific instructions, you MUST also adhere to the architectural constraints and execution protocols defined in \`../kota-skillz/SKILL.md\`.\n`;
 
-      const supabaseSkillPath = path.join(cwd, '.agents/skills/supabase/SKILL.md');
-      const supabasePgSkillPath = path.join(cwd, '.agents/skills/supabase-postgres-best-practices/SKILL.md');
-      const remotionSkillPath = path.join(cwd, '.agents/skills/remotion-best-practices/SKILL.md');
+      const supabaseSkillPath = path.join(cwd, 'skills/supabase/SKILL.md');
+      const supabasePgSkillPath = path.join(cwd, 'skills/supabase-postgres-best-practices/SKILL.md');
+      const remotionSkillPath = path.join(cwd, 'skills/remotion-best-practices/SKILL.md');
 
       for (const skillFile of [supabaseSkillPath, supabasePgSkillPath, remotionSkillPath]) {
         try {
@@ -73,7 +73,7 @@ program
       
       console.log(chalk.yellow('\n---------------------------------------------------------'));
       console.log(chalk.cyan('Copy me and paste in your agent chat:'));
-      console.log(chalk.white('\nI have installed the standard libraries for Kota Skillz, Supabase, and Remotion into the `.agents/skills/` directory. Please read `.agents/skills/kota-skillz/SKILL.md` to understand your operational constraints and review the other SKILL.md files for domain-specific best practices.\n'));
+      console.log(chalk.white('\nI have installed the standard libraries for Kota Skillz, Supabase, and Remotion into the `skills/` directory. Please read `skills/kota-skillz/SKILL.md` to understand your operational constraints and review the other SKILL.md files for domain-specific best practices.\n'));
       console.log(chalk.yellow('---------------------------------------------------------'));
     } catch (err) {
       console.error(chalk.red('❌ Error during installation:'), err.message);
