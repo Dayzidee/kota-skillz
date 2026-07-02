@@ -87,6 +87,42 @@ program
           console.log(chalk.yellow(`  ⚠️ Could not copy ${skillName} from local bundle, skipping...`));
         }
       }
+
+      // Copy core kota-skillz skill files and folders
+      console.log(chalk.blue('\n📦 Deploying core kota-skillz skill & patterns...'));
+      const coreKotaDestDir = path.join(targetSkillsDir, 'kota-skillz');
+      await fs.mkdir(coreKotaDestDir, { recursive: true });
+
+      // Copy root files
+      const rootFilesToCopy = ['SKILL.md', 'README.md', 'ROADMAP.md'];
+      const packageRoot = path.resolve(bundledSkillsDir, '..');
+
+      for (const file of rootFilesToCopy) {
+        try {
+          await fs.copyFile(path.join(packageRoot, file), path.join(coreKotaDestDir, file));
+        } catch (e) {}
+      }
+
+      // Copy directories
+      const dirsToCopy = [
+        'patterns',
+        'features',
+        'failures',
+        'debugging',
+        'instructions',
+        'prompts',
+        'skeleton',
+        'stack'
+      ];
+
+      for (const dir of dirsToCopy) {
+        try {
+          await fs.cp(path.join(packageRoot, dir), path.join(coreKotaDestDir, dir), { recursive: true });
+          console.log(chalk.green(`  ✓ Installed core kota-skillz/${dir}`));
+        } catch (e) {
+          console.log(chalk.yellow(`  ⚠️ Could not copy core directory ${dir}, skipping...`));
+        }
+      }
       
       console.log(chalk.blue('\n⚙️ Injecting cross-references into domain skills...'));
       
