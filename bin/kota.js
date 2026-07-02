@@ -40,7 +40,7 @@ program
           "computedHash": "0d2c4857a7d6fdcd3fbc46e458fa4c497f029cab89a01548b3defce203003932"
         },
         "ui-ux-pro-max-skill": {
-          "source": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
+          "source": "nextlevelbuilder/ui-ux-pro-max-skill",
           "sourceType": "github",
           "skillPath": "skills/ui-ux-pro-max-skill/SKILL.md",
           "ref": "b7e3af80f6e331f6fb456667b82b12cade7c9d35"
