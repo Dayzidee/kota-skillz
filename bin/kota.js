@@ -24,31 +24,31 @@ program
         "remotion-best-practices": {
           "source": "remotion-dev/skills",
           "sourceType": "github",
-          "skillPath": "skills/remotion/SKILL.md",
+          "skillPath": ".agents/skills/remotion/SKILL.md",
           "computedHash": "006f8413941b59eff54a7ce64851b8a2fb79e7a3a5f1a895e97a48f01482553d"
         },
         "supabase": {
           "source": "supabase/agent-skills",
           "sourceType": "github",
-          "skillPath": "skills/supabase/SKILL.md",
+          "skillPath": ".agents/skills/supabase/SKILL.md",
           "computedHash": "d414d598b9428b3e851c4ce61898649906b19e55aa7415bb42a286bd9ca2ab32"
         },
         "supabase-postgres-best-practices": {
           "source": "supabase/agent-skills",
           "sourceType": "github",
-          "skillPath": "skills/supabase-postgres-best-practices/SKILL.md",
+          "skillPath": ".agents/skills/supabase-postgres-best-practices/SKILL.md",
           "computedHash": "0d2c4857a7d6fdcd3fbc46e458fa4c497f029cab89a01548b3defce203003932"
         },
         "ui-ux-pro-max-skill": {
           "source": "nextlevelbuilder/ui-ux-pro-max-skill",
           "sourceType": "github",
-          "skillPath": "skills/ui-ux-pro-max-skill/SKILL.md",
+          "skillPath": ".agents/skills/ui-ux-pro-max-skill/SKILL.md",
           "ref": "b7e3af80f6e331f6fb456667b82b12cade7c9d35"
         },
         "ponytail": {
           "source": "DietrichGebert/ponytail",
           "sourceType": "github",
-          "skillPath": "skills/ponytail/SKILL.md",
+          "skillPath": ".agents/skills/ponytail/SKILL.md",
           "ref": "40e50d9e03242aa5dd53ac771950f9127362b25f"
         }
       }
@@ -62,7 +62,7 @@ program
       // Determine where the package's bundled skills folder is located
       const __dirname = path.dirname(new URL(import.meta.url).pathname);
       const bundledSkillsDir = path.resolve(__dirname, '../skills');
-      const targetSkillsDir = path.join(cwd, 'skills');
+      const targetSkillsDir = path.join(cwd, '.agents/skills');
 
       // Create target directory if it doesn't exist
       await fs.mkdir(targetSkillsDir, { recursive: true });
@@ -107,11 +107,10 @@ program
       const dirsToCopy = [
         'patterns',
         'features',
-        'failures',
-        'debugging',
         'instructions',
-        'prompts',
+        'scripts',
         'skeleton',
+        'skills',
         'stack'
       ];
 
@@ -128,9 +127,9 @@ program
       
       const injectionText = `\n\n---\n\n> [!IMPORTANT]\n> **KOTA SKILLZ INTEGRATION:** You are operating inside a Kota Skillz environment. In addition to these domain-specific instructions, you MUST also adhere to the architectural constraints and execution protocols defined in \`../kota-skillz/SKILL.md\`.\n`;
 
-      const supabaseSkillPath = path.join(cwd, 'skills/supabase/SKILL.md');
-      const supabasePgSkillPath = path.join(cwd, 'skills/supabase-postgres-best-practices/SKILL.md');
-      const remotionSkillPath = path.join(cwd, 'skills/remotion-best-practices/SKILL.md');
+      const supabaseSkillPath = path.join(cwd, '.agents/skills/supabase/SKILL.md');
+      const supabasePgSkillPath = path.join(cwd, '.agents/skills/supabase-postgres-best-practices/SKILL.md');
+      const remotionSkillPath = path.join(cwd, '.agents/skills/remotion-best-practices/SKILL.md');
 
       for (const skillFile of [supabaseSkillPath, supabasePgSkillPath, remotionSkillPath]) {
         try {
@@ -145,7 +144,7 @@ program
       
       console.log(chalk.yellow('\n---------------------------------------------------------'));
       console.log(chalk.cyan('Copy me and paste in your agent chat:'));
-      console.log(chalk.white('\nI have installed the standard libraries for Kota Skillz, Supabase, and Remotion into the `skills/` directory. Please read `skills/kota-skillz/SKILL.md` to understand your operational constraints and review the other SKILL.md files for domain-specific best practices.\n'));
+      console.log(chalk.white('\nI have installed the standard libraries for Kota Skillz, Supabase, and Remotion into the `.agents/skills/` directory. Please read `.agents/skills/kota-skillz/SKILL.md` to understand your operational constraints and review the other SKILL.md files for domain-specific best practices.\n'));
       console.log(chalk.yellow('---------------------------------------------------------'));
     } catch (err) {
       console.error(chalk.red('❌ Error during installation:'), err.message);
