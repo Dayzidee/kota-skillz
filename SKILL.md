@@ -171,3 +171,8 @@ All code must align with heuristics derived from:
 - [ ] No nested ternary operators.
 - [ ] Components < 300 lines of code.
 - [ ] Effective cleanup in `useEffect` hooks.
+### UI/UX Pro Max Skill
+The **UI/UX Pro Max** skill provides advanced UI/UX design patterns and components. See its documentation at `skills/ui-ux-pro-max-skill/README.md`.
+
+### Ponytail Skill
+The **Ponytail** skill ("lazy senior dev mode") enforces a 7-rung decision ladder that dramatically reduces code output (~54% fewer lines) while maintaining safety, validation, security, and accessibility. Before writing code, the agent stops at the first rung that holds: YAGNI → reuse → stdlib → native platform → installed dep → one-liner → minimum that works. See its documentation at `skills/ponytail/AGENTS.md`.

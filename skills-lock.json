@@ -18,6 +18,18 @@
       "sourceType": "github",
       "skillPath": "skills/supabase-postgres-best-practices/SKILL.md",
       "computedHash": "0d2c4857a7d6fdcd3fbc46e458fa4c497f029cab89a01548b3defce203003932"
+    },
+    "ui-ux-pro-max-skill": {
+      "source": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
+      "sourceType": "github",
+      "skillPath": "skills/ui-ux-pro-max-skill/SKILL.md",
+      "ref": "b7e3af80f6e331f6fb456667b82b12cade7c9d35"
+    },
+    "ponytail": {
+      "source": "DietrichGebert/ponytail",
+      "sourceType": "github",
+      "skillPath": "skills/ponytail/SKILL.md",
+      "ref": "40e50d9e03242aa5dd53ac771950f9127362b25f"
     }
   }
 }
