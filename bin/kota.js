@@ -57,10 +57,36 @@ program
     try {
       await fs.writeFile(lockPath, JSON.stringify(lockData, null, 2), 'utf8');
       console.log(chalk.green(`✅ Created skills-lock.json successfully!`));
-      console.log(chalk.blue('\n⏳ Pulling down AI agent skills (this may take a moment)...'));
-      
-      // Execute the skills.sh installation
-      execSync('npx --yes skills experimental_install', { stdio: 'inherit' });
+      console.log(chalk.blue('\n⏳ Deploying pre-bundled AI agent skills locally...'));
+
+      // Determine where the package's bundled skills folder is located
+      const __dirname = path.dirname(new URL(import.meta.url).pathname);
+      const bundledSkillsDir = path.resolve(__dirname, '../skills');
+      const targetSkillsDir = path.join(cwd, 'skills');
+
+      // Create target directory if it doesn't exist
+      await fs.mkdir(targetSkillsDir, { recursive: true });
+
+      // Cleanly copy each of the local skills folders to the target directory
+      const skillsToCopy = [
+        'remotion-best-practices',
+        'supabase',
+        'supabase-postgres-best-practices',
+        'ui-ux-pro-max-skill',
+        'ponytail'
+      ];
+
+      for (const skillName of skillsToCopy) {
+        const sourcePath = path.join(bundledSkillsDir, skillName);
+        const destPath = path.join(targetSkillsDir, skillName);
+        
+        try {
+          await fs.cp(sourcePath, destPath, { recursive: true });
+          console.log(chalk.green(`  ✓ Installed ${skillName} (local bundle)`));
+        } catch (e) {
+          console.log(chalk.yellow(`  ⚠️ Could not copy ${skillName} from local bundle, skipping...`));
+        }
+      }
       
       console.log(chalk.blue('\n⚙️ Injecting cross-references into domain skills...'));
       
